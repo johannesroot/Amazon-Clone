@@ -3,7 +3,7 @@ import Layout from "../../Components/Layout/Layout";
 import { DataContext } from "../../Components/DataProvider/DataProvider";
 import { initialState, reducer } from "../../Utility/reducer";
 import { Type } from "../../Utility/action.type";
-import styles from "./cart.module.css";
+import styles from "./Cart.module.css";
 import { Link } from "react-router-dom";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import ProductCard from "../../Components/Product/ProductCard";

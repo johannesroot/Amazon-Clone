@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 // import amazon_letter_logo from "../../assets/amazon-logo-white.jpg";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import styles from "./Signup.module.css";
+// import styles from "./Signup.module.css";
 import { IoMdPhotos } from "react-icons/io";
 import Layout from "../../Components/Layout/Layout";
  
