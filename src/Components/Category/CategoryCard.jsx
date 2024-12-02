@@ -6,13 +6,13 @@ function CategoryCard({data}) {
   return (
     <div className={styles.category}>
 
-        {/* <Link to={`/category/${data?.name}`}> */}
+        <Link to={`/category/${data?.name}`}>
             <span>
                 <h2>{data?.title}</h2>
             </span>
             <img src={data?.imgLink} alt={data.name + ' products'} />
             <p>shop now</p>
-        {/* </Link> */}
+        </Link>
     </div>
   )
 }

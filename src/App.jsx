@@ -5,6 +5,7 @@ import Category from './Components/Category/Category'
 import Header from './Components/Header/Header'
 import Product from './Components/Product/Product'
 import Landing from './Pages/Landing/Landing'
+import Router from './Pages/Router/Router'
 
 function App() {
  
@@ -12,11 +13,11 @@ function App() {
   return (
     <>
 
-    <Header />
+    {/* <Header /> */}
     {/* <CarouselEffect />
     <Category />
     <Product /> */}
-    <Landing />
+    <Router />
 
     </>
   )
