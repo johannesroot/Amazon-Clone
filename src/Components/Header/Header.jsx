@@ -7,14 +7,20 @@ import { BiCart } from "react-icons/bi";
 import amazon from '../../assets/amazon-logo-white.png';
 import LowerHeader from "./LowerHeader";
 import { DataContext } from "../DataProvider/DataProvider";
-
+import { auth } from "../../Utility/firebase";
 
 
 const Header = () => {
-  const [{basket}, dispach]= useContext(DataContext)
+  const [{user, basket}, dispach]= useContext(DataContext)
   const totalItem = basket?.reduce((amount, item) => 
   {return item.amount + amount}
   , 0)
+
+  const handleAuthenticaton = () => {
+    if (user) {
+      auth.signOut();
+    }
+  };
   return (
     <section className={styles.fixed}>
       <section>
@@ -55,7 +61,7 @@ const Header = () => {
           {/* Other Sections can be uncommented if needed */}
           
           <div className={styles.order__container}>
-            <Link to="#" className={styles.language}>
+            <Link to="/" className={styles.language}>
               <img
                 src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1024px-Flag_of_the_United_States.svg.png"
                 alt="Flag"
@@ -64,10 +70,21 @@ const Header = () => {
                 <option>EN</option>
               </select>
             </Link>
-            <Link to="/Auth">
-              <div>
-                <p>Hello, Sign In</p>
-                <span>Account & Lists</span>
+            <Link to={!user && "/Auth"}>
+            <div>
+                {user ? (
+                  <>
+                    <p>Hello {user?.email?.split("@")[0]}</p>
+                    <span onClick={handleAuthenticaton}>
+                      Sign Out
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <p>Hello, Sign In</p>
+                    <span>Account & Lists</span>
+                  </>
+                )}
               </div>
             </Link>
             <Link to="/orders">
