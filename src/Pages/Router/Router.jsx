@@ -10,16 +10,17 @@ import ProductDetail from "../ProductDetail/ProductDetail";
 import Product from "../../Components/Product/Product";
 
 // //for stripe
-// import { Elements } from "@stripe/react-stripe-js";
-// import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
 import PageNotFound from "../PageNotFound/PageNotFound";
+import ProtectedRoute from "../../Components/ProtectedReoute";
 // import ProtectedRoute from "../";
 
-// //provide public key and load it to stirpe
-// const stripePromise = loadStripe(
-//   import.meta.env.VITE_STRIPE_PUBLIC_KEY
-// );
+//provide public key and load it to stirpe
+const stripePromise = loadStripe(
+  import.meta.env.VITE_STRIPE_PUBLIC_KEY
+);
 
 function Routering() {
   return (
@@ -32,28 +33,28 @@ function Routering() {
           path="/payments"
           element={
             // wrap payment component by Element from stripe and provide stripe prop with a value of stripePromise and hold that in protectedRoute
-            // <ProtectedRoute
-            //   msg={
-            //     "Please sign in to complete your payment. (You'll be redirected to the checkout page)"
-            //   }
-            //   redirect={"/payments"}
-            // >
-            //   <Elements stripe={stripePromise}>
+            <ProtectedRoute
+              msg={
+                "Please sign in to complete your payment. (You'll be redirected to the checkout page)"
+              }
+              redirect={"/payments"}
+            >
+              <Elements stripe={stripePromise}>
                 <Payment />
-            //   </Elements>
-            // </ProtectedRoute>
+              </Elements>
+             </ProtectedRoute>
           }
         />
 
-        <Route
+           <Route
           path="/orders"
           element={
-            // <ProtectedRoute
-            //   msg={"Please sign in to access your orders"}
-            //   redirect={"/orders"}
-            // >
+            <ProtectedRoute
+              msg={"Please sign in to access your orders"}
+              redirect={"/orders"}
+            >
               <Orders />
-            // </ProtectedRoute>
+            </ProtectedRoute>
           }
         />
         <Route path="/cart" element={<Cart />} />
